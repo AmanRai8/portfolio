@@ -1,93 +1,83 @@
 "use client";
-import Link from "next/link";
-import React, { useState } from "react";
-import NavLink from "./NavLink";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import MenuOverlay from "./MenuOverlay";
-import { CgGitFork } from "react-icons/cg";
-import { AiFillStar } from "react-icons/ai";
 
-const navLinks = [
-  { title: "About", path: "#about" },
-  { title: "Projects", path: "#projects" },
-  { title: "Contact", path: "#contacts" },
-];
+import { useState } from "react";
+import { MenuIcon, XIcon, Github } from "lucide-react";
+import Link from "next/link";
 
 const Navbar = () => {
-  const [navbarOpen, setNavbarOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const links = [
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-100">
-      <div className="flex flex-wrap items-center justify-between mx-auto px-4 py-3">
-        <Link
-          href="/"
-          className="text-2xl md:text-5xl text-white font-semibold"
-        >
-          LOGO
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0c14]/90 backdrop-blur-md border-b border-[#38bdf8] py-4">
+      <div className="container mx-auto flex items-center justify-between px-6">
+        {/* LOGO */}
+        <Link href="/" className="flex items-center gap-4">
+          <span className="text-3xl md:text-4xl font-bold font-mono text-[#f2f2f2]">
+            A<span className="text-[#18cef2]">man</span>
+          </span>
         </Link>
 
-        {/* Mobile Menu Button */}
-        <div className="block md:hidden">
-          {!navbarOpen ? (
-            <button
-              onClick={() => setNavbarOpen(true)}
-              className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8 text-[#f2f2f2] text-lg md:text-xl">
+          {links.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="hover:text-[#38bdf8] transition-colors duration-300 font-semibold"
             >
-              <Bars3Icon className="h-5 w-5" />
-            </button>
-          ) : (
-            <button
-              onClick={() => setNavbarOpen(false)}
-              className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
-            >
-              <XMarkIcon className="h-5 w-5" />
-            </button>
-          )}
-        </div>
+              {link.name}
+            </a>
+          ))}
+          {/* GitHub Button */}
+          <a
+            href="https://github.com/AmanRai8/ai_trainer"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-3 py-1 border-none rounded-lg hover:bg-[#18cef2]/30 transition-all duration-300 text-lg md:text-xl"
+          >
+            <Github size={25} />
+          </a>
+        </nav>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:block md:w-auto" id="navbar">
-          <ul className="flex items-center p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                <NavLink href={link.path} title={link.title} />
-              </li>
-            ))}
-            {/* GitHub Button inside nav links */}
-            <li>
-              <Link
-                href="https://github.com/AmanRai8/portfolio"
-                target="_blank"
-                className="flex items-center gap-2 text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition"
-              >
-                <CgGitFork style={{ fontSize: "1.2em" }} />
-                <AiFillStar style={{ fontSize: "1.1em" }} />
-              </Link>
-            </li>
-          </ul>
-        </div>
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden flex items-center text-[#f2f2f2]"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <XIcon size={28} /> : <MenuIcon size={28} />}
+        </button>
       </div>
 
-      {/* GitHub Button for Mobile BELOW MenuOverlay */}
-      {navbarOpen && (
-        <>
-          <MenuOverlay
-            links={navLinks}
-            closeMenu={() => setNavbarOpen(false)}
-          />
-          <div className="flex justify-center mt-4 mb-4 md:hidden">
-            <Link
-              href="https://github.com/AmanRai8/portfolio"
-              target="_blank"
-              className="flex items-center gap-2 text-white border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition"
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-[#0b4a7d]/90 backdrop-blur-md border-t border-[#38bdf8] w-full px-6 py-4 flex flex-col items-center gap-6 text-[#f2f2f2] text-lg">
+          {links.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="hover:text-[#38bdf8] transition-colors duration-300 font-semibold text-xl"
+              onClick={() => setMenuOpen(false)}
             >
-              <CgGitFork style={{ fontSize: "1.2em" }} />
-              <AiFillStar style={{ fontSize: "1.1em" }} />
-            </Link>
-          </div>
-        </>
+              {link.name}
+            </a>
+          ))}
+          <a
+            href="https://github.com/AmanRai8/ai_trainer"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-[#18cef2]/30 transition-all duration-300 text-xl"
+          >
+            <Github size={24} />
+          </a>
+        </div>
       )}
-    </nav>
+    </header>
   );
 };
 

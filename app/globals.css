@@ -24,3 +24,77 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.btn {
+  padding: 15px;
+  font-size: 1.1rem; /* bigger text */
+  background: #ffcc66;
+  color: #0f1419;
+  font-weight: bold;
+  width: 100%;
+  border-radius: 0.6rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+  animation: pulse 2s infinite;
+}
+
+/* Gradient animation for name */
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 5s ease infinite;
+}
+
+/* Gradient effect on typeAnimation */
+@keyframes type-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+.animate-type-gradient {
+  background: linear-gradient(90deg, #18cef2, #1089bd, #38bdf8);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: type-gradient 3s ease infinite;
+}
+
+@keyframes pulseScale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulseColor {
+  0%,
+  100% {
+    filter: brightness(100%);
+  }
+  50% {
+    filter: brightness(150%);
+  }
+}
+.pulse-scale {
+  animation: pulseScale 2s infinite;
+}
+
+.pulse-color {
+  animation: pulseColor 2s infinite;
+}
