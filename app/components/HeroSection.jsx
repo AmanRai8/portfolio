@@ -2,58 +2,124 @@
 import React from "react";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
-  return (
-    <section>
-      <div className="grid grid-cols-1 sm:grid-cols-12">
-        <div className="col-span-7 place-self-center text-center sm:text-left">
-          <h1 className="mb-4 text-4xl sm:text-4xl lg:text-6xl font-extrabold">
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600">
-              Hello, I'm{" "}
-            </span>
-            <br />
-            <TypeAnimation
-              sequence={[
-                // Same substring at the start will only be typed out once, initially
-                "oppai",
-                1000, // wait 1s before replacing "Mice" with "Hamsters"
-                "Web Developer",
-                1000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
-          </h1>
-          <p className="text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl pr-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
-            libero. Veniam voluptatibus corporis ad consequuntur ipsa explicabo
-          </p>
-          <div>
-            <button className="relative mr-4 w-full sm:w-fit px-6 py-3 font-semibold rounded-full text-white bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400 hover:from-blue-700 hover:via-blue-600 hover:to-cyan-500 active:from-blue-800 active:via-blue-700 active:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-blue-500/50 active:scale-95 transform">
-              <span className="relative ">Hire Me</span>
-              <span className="absolute inset-0 rounded-full bg-blue-500 blur-lg opacity-30 group-hover:opacity-50 transition duration-300"></span>
-            </button>
+  const textVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+  };
 
-            <button className="px-0.5 py-0.5 w-full sm:w-fit rounded-full bg-white hover:bg-slate-800 active:bg-white text-white active:text-black mt-3 transform active:scale-95 transition duration-150">
-              <span className="block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2 ">
+  const imageVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
+  };
+
+  const buttonHover = {
+    hover: { scale: 1.05 },
+    tap: { scale: 0.95 },
+  };
+
+  return (
+    <section
+      className="bg-[#0a0c14] min-h-screen flex items-center pt-20 pb-16 sm:pt-32 lg:pt-15"
+      id="home"
+    >
+      <div className="container mx-auto px-4 md:px-12 grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+        {/* Text Content */}
+        <motion.div
+          className="col-span-7 text-center sm:text-left space-y-9"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          variants={textVariants}
+        >
+          <h1 className="font-extrabold">
+            <span className="text-white text-4xl sm:text-5xl lg:text-6xl block">
+              Hello, I'm
+            </span>
+            <span className="inline-block text-6xl sm:text-7xl lg:text-7xl font-extrabold bg-gradient-to-r from-pink-500 via-purple-500 to-fuchsia-500 bg-clip-text text-transparent animate-gradient-x">
+              Aman Rai
+            </span>
+            <span className="block text-white text-4xl sm:text-5xl lg:text-5xl mt-3">
+              I'm a{" "}
+              <TypeAnimation
+                sequence={[
+                  "Web Developer",
+                  1000,
+                  "Full-Stack Developer",
+                  1000,
+                  "Coding Enthusiast",
+                  1000,
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+                className="text-[#18cef2] font-semibold animate-type-gradient"
+              />
+            </span>
+          </h1>
+
+          <p className="text-[#94a3b8] text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto md:mx-0">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
+            id corporis nesciunt sapiente illum amet laboriosam, reprehenderit,
+            at sunt nemo, explicabo molestias incidunt! Placeat magni ipsum
+            molestias assumenda laudantium! Est.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-6">
+            {/* Hire Me Button */}
+            <motion.button
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="relative px-8 py-4 text-lg sm:text-xl font-semibold rounded-full text-[#0a0c14] shadow-lg shadow-[#18cef2]/50 pulse-scale overflow-hidden cursor-pointer group"
+              style={{ backgroundColor: "#18cef2" }}
+              whileHover="hover"
+              whileTap="tap"
+              variants={buttonHover}
+            >
+              Hire Me
+              <span className="absolute bottom-0 left-0 h-[3px] w-0 bg-[#0a0c14] group-hover:w-full transition-all duration-500"></span>
+            </motion.button>
+
+            {/* Download CV Button */}
+            <motion.button
+              className="relative px-0.5 py-0.5 rounded-full mt-3 sm:mt-0 shadow-lg shadow-[#9333ea]/40 pulse-color overflow-hidden cursor-pointer group"
+              style={{ backgroundColor: "#1f1235" }}
+              whileHover="hover"
+              whileTap="tap"
+              variants={buttonHover}
+            >
+              <span className="block rounded-full px-6 py-3 text-lg sm:text-xl bg-gradient-to-r from-[#6d28d9] via-[#9333ea] to-[#c084fc] text-white group-hover:opacity-90">
                 Download CV
               </span>
-            </button>
+              <span className="absolute bottom-0 left-0 h-[3px] w-0 bg-[#18cef2] group-hover:w-full transition-all duration-500"></span>
+            </motion.button>
           </div>
-        </div>
-        <div className="col-span-5 place-self-center mt-4 lg:mt-0">
-          <div className="rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
+        </motion.div>
+
+        {/* Hero Image */}
+        <motion.div
+          className="col-span-5 flex justify-center sm:justify-end mt-8 lg:mt-0"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.3 }}
+          variants={imageVariants}
+        >
+          <div className="rounded-full w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] overflow-hidden mx-auto sm:mx-0 pulse-shadow transition-transform duration-500 ease-out transform hover:scale-105">
             <Image
-              src="/images/hero-image.png"
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+              src="/images/hero.png"
               alt="hero image"
-              width={300}
-              height={300}
+              width={450}
+              height={450}
+              className="object-cover w-full h-full rounded-full"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
