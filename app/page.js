@@ -4,6 +4,7 @@ import AboutSection from "./components/AboutSection";
 import ProjectsSection from "./components/ProjectsSection";
 import EmailSection from "./components/EmailSection";
 import Footer from "./components/Footer";
+import SkillsSection from "./components/SkillsSection";
 
 export default function Home() {
   return (
@@ -11,9 +12,10 @@ export default function Home() {
       <Navbar />
 
       {/* Container for sections */}
-      <div className="container mt-0 mx-auto px-6 sm:px-12">
+      <div className="container mt-0 mx-auto max-w-full px-6 sm:px-12">
         <HeroSection />
         <AboutSection />
+        <SkillsSection />
         <ProjectsSection />
         <EmailSection />
         <Footer />

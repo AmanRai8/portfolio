@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Aman Rai Portfolio",
-  description: "Full-stack Developer Portfolio",
+  title: "Portfolio",
+  description: "Aman Rai Portfolio",
 };
 
 export default function RootLayout({ children }) {

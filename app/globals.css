@@ -25,20 +25,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.btn {
-  padding: 15px;
-  font-size: 1.1rem; /* bigger text */
-  background: #ffcc66;
-  color: #0f1419;
-  font-weight: bold;
-  width: 100%;
-  border-radius: 0.6rem;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
-  animation: pulse 2s infinite;
-}
-
 /* Gradient animation for name */
 @keyframes gradient-x {
   0%,
@@ -46,12 +32,12 @@ body {
     background-position: 0% 50%;
   }
   50% {
-    background-position: 100% 50%;
+    background-position: 100% 100%;
   }
 }
 .animate-gradient-x {
   background-size: 200% 200%;
-  animation: gradient-x 5s ease infinite;
+  animation: gradient-x 3s ease infinite;
 }
 
 /* Gradient effect on typeAnimation */
@@ -65,11 +51,11 @@ body {
   }
 }
 .animate-type-gradient {
-  background: linear-gradient(90deg, #18cef2, #1089bd, #38bdf8);
+  background: linear-gradient(90deg, #18cef2, #01fafa, #38bdf8);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  animation: type-gradient 3s ease infinite;
+  animation: type-gradient 2s ease infinite;
 }
 
 @keyframes pulseScale {
@@ -97,4 +83,64 @@ body {
 
 .pulse-color {
   animation: pulseColor 2s infinite;
+}
+@keyframes pulseColor1 {
+  0%,
+  100% {
+    filter: brightness(100%);
+  }
+  50% {
+    filter: brightness(120%);
+  }
+}
+.pulse-color1 {
+  animation: pulseColor1 2s infinite;
+}
+
+@keyframes pulseShadow {
+  0%,
+  100% {
+    box-shadow: 0 0 30px 8px #18cef2;
+  }
+  50% {
+    box-shadow: 0 0 60px 16px #38bdf8;
+  }
+}
+
+.pulse-shadow {
+  animation: pulseShadow 3s ease-in-out infinite;
+  border-radius: 9999px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+@keyframes shadowPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(24, 206, 242, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(24, 206, 242, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(24, 206, 242, 0.3);
+  }
 }

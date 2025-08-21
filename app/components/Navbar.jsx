@@ -8,7 +8,9 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
+    { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
   ];
@@ -19,7 +21,7 @@ const Navbar = () => {
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-4">
           <span className="text-3xl md:text-4xl font-bold font-mono text-[#f2f2f2]">
-            A<span className="text-[#18cef2]">man</span>
+            A<span className="text-[#18cef2] pulse-color">man</span>
           </span>
         </Link>
 
@@ -56,7 +58,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0b4a7d]/90 backdrop-blur-md border-t border-[#38bdf8] w-full px-6 py-4 flex flex-col items-center gap-6 text-[#f2f2f2] text-lg">
+        <div className="md:hidden bg-[#0a0c14]/90 backdrop-blur-md border-t border-[#38bdf8] w-full px-6 py-4 flex flex-col items-center gap-6 text-[#f2f2f2] text-lg">
           {links.map((link) => (
             <a
               key={link.name}

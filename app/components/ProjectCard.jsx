@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
   return (
-    <div className="group rounded-xl overflow-hidden shadow-lg hover:shadow-[0_0_40px_#18cef2] transition-all duration-300">
+    <div className="group rounded-xl overflow-hidden shadow-lg hover:shadow-[0_0_40px_#18cef2] transition-all duration-300 cursor-pointer">
       {/* Image */}
       <div
         className="h-64 md:h-80 relative rounded-xl overflow-hidden"
@@ -48,7 +48,7 @@ const ProjectCard = ({ imgUrl, title, description, gitUrl, previewUrl }) => {
 
       {/* Info */}
       <div className="bg-[#0a0c14] text-white rounded-b-xl mt-3 py-6 px-6 border-t border-[#18cef2]">
-        <h5 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 text-[#38bdf8]">
+        <h5 className="text-xl sm:text-2xl lg:text-3xl font-semibold mb-2 text-[#38bdf8] pulse-color">
           {title}
         </h5>
         <p className="text-[#94a3b8] text-lg sm:text-xl">{description}</p>
