@@ -28,7 +28,7 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 md:px-12 grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
         {/* Text Content */}
         <motion.div
-          className="col-span-7 text-center sm:text-left space-y-9"
+          className="col-span-7 text-center sm:text-left space-y-6 sm:space-y-9"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
@@ -60,6 +60,25 @@ const HeroSection = () => {
             </span>
           </h1>
 
+          {/* Mobile Image */}
+          <motion.div
+            className="sm:hidden flex justify-center my-4"
+            initial="hidden"
+            whileInView="visible"
+            variants={imageVariants}
+          >
+            <div className="rounded-full w-[200px] h-[200px] overflow-hidden pulse-shadow">
+              <Image
+                src="/me.jpg"
+                alt="hero image"
+                width={200}
+                height={200}
+                className="object-cover w-full h-full rounded-full"
+              />
+            </div>
+          </motion.div>
+
+          {/* Introduction */}
           <p className="text-[#94a3b8] text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto md:mx-0">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
             id corporis nesciunt sapiente illum amet laboriosam, reprehenderit,
@@ -69,7 +88,6 @@ const HeroSection = () => {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-6">
-            {/* Hire Me Button */}
             <motion.button
               onClick={() =>
                 document
@@ -86,10 +104,9 @@ const HeroSection = () => {
               <span className="absolute bottom-0 left-0 h-[3px] w-0 bg-[#0a0c14] group-hover:w-full transition-all duration-500"></span>
             </motion.button>
 
-            {/* Download CV Button */}
             <motion.a
-              href="/CV.pdf" // put your PDF in the public folder
-              download // ensures direct download
+              href="/CV.pdf"
+              download
               className="relative px-0.5 py-0.5 rounded-full mt-3 sm:mt-0 shadow-lg shadow-[#9333ea]/40 pulse-color overflow-hidden cursor-pointer group"
               whileHover="hover"
               whileTap="tap"
@@ -103,17 +120,17 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        {/* Hero Image */}
+        {/* Desktop Image */}
         <motion.div
-          className="col-span-5 flex justify-center sm:justify-end mt-8 lg:mt-0"
+          className="col-span-5 hidden sm:flex justify-center sm:justify-end mt-8 lg:mt-0"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.3 }}
           variants={imageVariants}
         >
-          <div className="rounded-full w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] lg:w-[450px] lg:h-[450px] overflow-hidden mx-auto sm:mx-0 pulse-shadow transition-transform duration-500 ease-out transform hover:scale-105">
+          <div className="rounded-full w-[350px] h-[350px] lg:w-[450px] lg:h-[450px] overflow-hidden mx-auto sm:mx-0 pulse-shadow transition-transform duration-500 ease-out transform hover:scale-105">
             <Image
-              src="/images/hero.png"
+              src="/me.jpg"
               alt="hero image"
               width={450}
               height={450}
