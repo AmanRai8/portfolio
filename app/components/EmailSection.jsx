@@ -1,52 +1,63 @@
-//can you add a success and failure notification useing react-hot-toast when the feedback is send successfully or have an error
 "use client";
 
 import React, { useState } from "react";
-import { Github, Linkedin, Facebook, Instagram, Mail } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Facebook,
+  Instagram,
+  Mail,
+  Phone,
+} from "lucide-react";
 import { motion } from "framer-motion";
+import { toast, Toaster } from "react-hot-toast";
 
 const EmailSection = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [feedback, setFeedback] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const email = "amanrai2002acr@gmail.com";
+  const phone = "+9779826337227";
 
+  const [name, setName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [feedback, setFeedback] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  // Copy text to clipboard with toast notification
+  const copyToClipboard = (text, msg) => {
+    setTimeout(() => {
+      navigator.clipboard.writeText(text);
+      toast.success(msg, { id: "unique-email-toast" });
+    }, 0);
+  };
+
+  // Form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
-    setSubmitted(false);
 
     try {
       const res = await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message: feedback }),
+        body: JSON.stringify({ name, email: userEmail, message: feedback }),
       });
 
-      const data = await res.json();
-
       if (res.ok) {
-        setSubmitted(true);
         setName("");
-        setEmail("");
+        setUserEmail("");
         setFeedback("");
-        setTimeout(() => setSubmitted(false), 5000);
+        toast.success("Message sent successfully!", {
+          id: "unique-submit-toast",
+        });
       } else {
-        setError(data.error || "Failed to send feedback.");
-        setTimeout(() => setError(""), 5000);
+        toast.error("Failed to send feedback.", { id: "unique-submit-toast" });
       }
     } catch {
-      setError("Failed to send feedback.");
-      setTimeout(() => setError(""), 5000);
+      toast.error("Failed to send feedback.", { id: "unique-submit-toast" });
     } finally {
       setLoading(false);
     }
   };
 
-  // Framer Motion variants
   const leftVariants = {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
@@ -58,12 +69,12 @@ const EmailSection = () => {
   };
 
   const iconVariants = {
-    hover: { scale: 1.2, transition: { duration: 0.3 } },
+    hover: { scale: 1.2, transition: { duration: 0.2 } },
   };
 
   return (
     <section
-      className="bg-[#0a0c14] mb-70 px-4 sm:px-6 md:px-12 lg:px-16"
+      className="bg-[#0a0c14] py-24 px-4 sm:px-6 md:px-12 lg:px-16"
       id="contact"
     >
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
@@ -103,7 +114,6 @@ const EmailSection = () => {
                 icon: <Instagram size={32} />,
                 url: "https://instagram.com/yourusername",
               },
-              { icon: <Mail size={32} />, url: "mailto:yourmail@example.com" },
             ].map((item, idx) => (
               <motion.a
                 key={idx}
@@ -117,6 +127,34 @@ const EmailSection = () => {
                 {item.icon}
               </motion.a>
             ))}
+          </div>
+
+          {/* Email */}
+          <div
+            className="flex items-center justify-center md:justify-start gap-3 text-[#18cef2] cursor-pointer pulse-color"
+            onClick={() => copyToClipboard(email, "Email copied to clipboard!")}
+          >
+            <motion.div
+              whileHover={{ scale: 1.2 }}
+              transition={{ duration: 0.2 }}
+              className="flex items-center gap-3"
+            >
+              <Mail size={28} />
+              <span className="text-lg sm:text-xl">{email}</span>
+            </motion.div>
+          </div>
+
+          {/* Phone */}
+          <div className="flex items-center justify-center md:justify-start gap-3 text-[#18cef2] cursor-pointer pulse-color">
+            <motion.a
+              href={`tel:${phone}`}
+              whileHover={{ scale: 1.2 }}
+              transition={{ duration: 0.2 }}
+              className="flex items-center gap-3 text-lg sm:text-xl"
+            >
+              <Phone size={28} />
+              {phone}
+            </motion.a>
           </div>
         </motion.div>
 
@@ -143,8 +181,8 @@ const EmailSection = () => {
             <input
               type="email"
               placeholder="Your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={userEmail}
+              onChange={(e) => setUserEmail(e.target.value)}
               className="bg-[#121212] border border-[#18cef2] rounded px-4 py-4 text-white placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#18cef2] text-lg sm:text-xl"
               required
             />
@@ -163,27 +201,6 @@ const EmailSection = () => {
             >
               {loading ? "Sending..." : "Submit"}
             </button>
-
-            {submitted && (
-              <motion.p
-                className="text-green-500 mt-2 text-lg sm:text-xl text-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                Message sent successfully!
-              </motion.p>
-            )}
-            {error && (
-              <motion.p
-                className="text-red-500 mt-2 text-lg sm:text-xl text-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                {error}
-              </motion.p>
-            )}
           </form>
         </motion.div>
       </div>
