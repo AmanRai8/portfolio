@@ -87,9 +87,10 @@ const HeroSection = () => {
             </motion.button>
 
             {/* Download CV Button */}
-            <motion.button
+            <motion.a
+              href="/CV.pdf" // put your PDF in the public folder
+              download // ensures direct download
               className="relative px-0.5 py-0.5 rounded-full mt-3 sm:mt-0 shadow-lg shadow-[#9333ea]/40 pulse-color overflow-hidden cursor-pointer group"
-              style={{ backgroundColor: "#1f1235" }}
               whileHover="hover"
               whileTap="tap"
               variants={buttonHover}
@@ -98,7 +99,7 @@ const HeroSection = () => {
                 Download CV
               </span>
               <span className="absolute bottom-0 left-0 h-[3px] w-0 bg-[#18cef2] group-hover:w-full transition-all duration-500"></span>
-            </motion.button>
+            </motion.a>
           </div>
         </motion.div>
 
