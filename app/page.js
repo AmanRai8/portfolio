@@ -4,26 +4,37 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
-import SkillsSection from "./components/SkillsSection";
+import Skills from "./components/Skills";
 import ProjectsSection from "./components/ProjectsSection";
 import EmailSection from "./components/EmailSection";
 import Footer from "./components/Footer";
 import LoadingScreen from "./components/LoadingScreen";
-import Skills from "./components/Skills";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Detect mobile
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 100); // loading screen duration
-    return () => clearTimeout(timer);
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    handleResize(); // set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Loading screen only for non-mobile
+  useEffect(() => {
+    if (!isMobile) {
+      const timer = setTimeout(() => setIsLoading(false), 100);
+      return () => clearTimeout(timer);
+    } else {
+      setIsLoading(false); // skip loading on mobile
+    }
+  }, [isMobile]);
 
   return (
     <>
-      <LoadingScreen isLoading={isLoading} />
+      {!isMobile && <LoadingScreen isLoading={isLoading} />}
       {!isLoading && (
         <motion.main
           className="flex flex-col min-h-screen bg-[#0a0c14]"
@@ -34,7 +45,6 @@ export default function Home() {
           <Navbar />
           <div className="container mt-0 mx-auto max-w-full px-6 sm:px-12">
             <HeroSection />
-            {/* <SkillsSection /> */}
             <Skills />
             <ProjectsSection />
             <EmailSection />
