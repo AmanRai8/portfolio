@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Github,
   Linkedin,
@@ -10,7 +10,7 @@ import {
   Phone,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 const EmailSection = () => {
   const email = "amanrai2002acr@gmail.com";
@@ -20,20 +20,23 @@ const EmailSection = () => {
   const [userEmail, setUserEmail] = useState("");
   const [feedback, setFeedback] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Copy text to clipboard with toast notification
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const copyToClipboard = (text, msg) => {
-    setTimeout(() => {
-      navigator.clipboard.writeText(text);
-      toast.success(msg, { id: "unique-email-toast" });
-    }, 0);
+    navigator.clipboard.writeText(text);
+    toast.success(msg, { id: "unique-email-toast" });
   };
 
-  // Form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
     try {
       const res = await fetch("/api/send", {
         method: "POST",
@@ -62,15 +65,11 @@ const EmailSection = () => {
     hidden: { opacity: 0, x: -50 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
   };
-
   const rightVariants = {
     hidden: { opacity: 0, x: 50 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.8 } },
   };
-
-  const iconVariants = {
-    hover: { scale: 1.2, transition: { duration: 0.2 } },
-  };
+  const iconVariants = { hover: { scale: 1.2, transition: { duration: 0.2 } } };
 
   return (
     <section
@@ -79,133 +78,231 @@ const EmailSection = () => {
     >
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
         {/* Left Side */}
-        <motion.div
-          className="flex flex-col justify-center text-center md:text-left space-y-6"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          variants={leftVariants}
-        >
-          <h5 className="text-5xl sm:text-6xl font-bold text-[#18cef2] cursor-pointer pulse-color1">
-            Let's Connect
-          </h5>
-          <p className="text-[#94a3b8] text-lg sm:text-xl lg:text-2xl max-w-2xl mx-auto md:mx-0">
-            I'm currently looking for new opportunities, and my inbox is always
-            open. Whether you have a question or just want to say hi, I'll do my
-            best to get back to you!
-          </p>
+        {isMobile ? (
+          <div className="flex flex-col justify-center text-center md:text-left space-y-6">
+            <h5 className="text-5xl sm:text-6xl font-bold text-[#18cef2] cursor-pointer pulse-color1">
+              Let's Connect
+            </h5>
+            <p className="text-[#94a3b8] text-lg sm:text-xl lg:text-2xl max-w-2xl mx-auto md:mx-0">
+              I'm currently looking for new opportunities, and my inbox is
+              always open. Whether you have a question or just want to say hi,
+              I'll do my best to get back to you!
+            </p>
 
-          {/* Social Icons */}
-          <div className="flex justify-center md:justify-start gap-6 text-[#18cef2]">
-            {[
-              {
-                icon: <Github size={32} />,
-                url: "https://github.com/AmanRai8",
-              },
-              {
-                icon: <Linkedin size={32} />,
-                url: "https://www.linkedin.com/in/aman-rai-1b3782341/",
-              },
-              {
-                icon: <Facebook size={32} />,
-                url: "https://www.facebook.com/aman.rai.131116/",
-              },
-              {
-                icon: <Instagram size={32} />,
-                url: "https://www.instagram.com/sussy_baka9.11/",
-              },
-            ].map((item, idx) => (
-              <motion.a
-                key={idx}
-                href={item.url}
+            {/* Social Icons */}
+            <div className="flex justify-center md:justify-start gap-6 text-[#18cef2]">
+              <a
+                href="https://github.com/AmanRai8"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#18cef2] pulse-color"
-                whileHover="hover"
-                variants={iconVariants}
               >
-                {item.icon}
-              </motion.a>
-            ))}
-          </div>
+                {<Github size={32} />}
+              </a>
+              <a
+                href="https://www.linkedin.com/in/aman-rai-1b3782341/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {<Linkedin size={32} />}
+              </a>
+              <a
+                href="https://www.facebook.com/aman.rai.131116/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {<Facebook size={32} />}
+              </a>
+              <a
+                href="https://www.instagram.com/sussy_baka9.11/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {<Instagram size={32} />}
+              </a>
+            </div>
 
-          {/* Email */}
-          <div
-            className="flex items-center justify-center md:justify-start gap-3 text-[#18cef2] cursor-pointer pulse-color"
-            onClick={() => copyToClipboard(email, "Email copied to clipboard!")}
+            {/* Email */}
+            <div
+              className="flex items-center justify-center md:justify-start gap-3 text-[#18cef2] cursor-pointer pulse-color"
+              onClick={() =>
+                copyToClipboard(email, "Email copied to clipboard!")
+              }
+            >
+              <Mail size={28} />
+              <span className="text-lg sm:text-xl">{email}</span>
+            </div>
+
+            {/* Phone */}
+            <a
+              href={`tel:${phone}`}
+              className="flex items-center justify-center md:justify-start gap-3 text-[#18cef2] text-lg sm:text-xl pulse-color"
+            >
+              <Phone size={28} />
+              {phone}
+            </a>
+          </div>
+        ) : (
+          <motion.div
+            className="flex flex-col justify-center text-center md:text-left space-y-6"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            variants={leftVariants}
           >
+            <h5 className="text-5xl sm:text-6xl font-bold text-[#18cef2] cursor-pointer pulse-color1">
+              Let's Connect
+            </h5>
+            <p className="text-[#94a3b8] text-lg sm:text-xl lg:text-2xl max-w-2xl mx-auto md:mx-0">
+              I'm currently looking for new opportunities, and my inbox is
+              always open. Whether you have a question or just want to say hi,
+              I'll do my best to get back to you!
+            </p>
+
+            {/* Social Icons */}
+            <div className="flex justify-center md:justify-start gap-6 text-[#18cef2]">
+              {[
+                {
+                  icon: <Github size={32} />,
+                  url: "https://github.com/AmanRai8",
+                },
+                {
+                  icon: <Linkedin size={32} />,
+                  url: "https://www.linkedin.com/in/aman-rai-1b3782341/",
+                },
+                {
+                  icon: <Facebook size={32} />,
+                  url: "https://www.facebook.com/aman.rai.131116/",
+                },
+                {
+                  icon: <Instagram size={32} />,
+                  url: "https://www.instagram.com/sussy_baka9.11/",
+                },
+              ].map((item, idx) => (
+                <motion.a
+                  key={idx}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#18cef2] pulse-color"
+                  whileHover="hover"
+                  variants={iconVariants}
+                >
+                  {item.icon}
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Email */}
             <motion.div
               whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.2 }}
-              className="flex items-center gap-3"
+              className="flex items-center justify-center md:justify-start gap-3 text-[#18cef2] cursor-pointer pulse-color"
+              onClick={() =>
+                copyToClipboard(email, "Email copied to clipboard!")
+              }
             >
               <Mail size={28} />
               <span className="text-lg sm:text-xl">{email}</span>
             </motion.div>
-          </div>
 
-          {/* Phone */}
-          <div className="flex items-center justify-center md:justify-start gap-3 text-[#18cef2] cursor-pointer pulse-color">
+            {/* Phone */}
             <motion.a
               href={`tel:${phone}`}
               whileHover={{ scale: 1.2 }}
               transition={{ duration: 0.2 }}
-              className="flex items-center gap-3 text-lg sm:text-xl"
+              className="flex items-center justify-center md:justify-start gap-3 text-[#18cef2] text-lg sm:text-xl pulse-color"
             >
               <Phone size={28} />
               {phone}
             </motion.a>
-          </div>
-        </motion.div>
+          </motion.div>
+        )}
 
         {/* Right Side - Contact Form */}
-        <motion.div
-          className="flex justify-center md:justify-end"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-          variants={rightVariants}
-        >
-          <form
-            className="flex flex-col gap-4 w-full max-w-full"
-            onSubmit={handleSubmit}
+        {isMobile ? (
+          <div className="flex justify-center md:justify-end">
+            <ContactForm
+              name={name}
+              userEmail={userEmail}
+              feedback={feedback}
+              loading={loading}
+              setName={setName}
+              setUserEmail={setUserEmail}
+              setFeedback={setFeedback}
+              handleSubmit={handleSubmit}
+            />
+          </div>
+        ) : (
+          <motion.div
+            className="flex justify-center md:justify-end"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            variants={rightVariants}
           >
-            <input
-              type="text"
-              placeholder="Your Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="bg-[#121212] border border-[#18cef2] rounded px-4 py-4 text-white placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#18cef2] text-lg sm:text-xl"
-              required
+            <ContactForm
+              name={name}
+              userEmail={userEmail}
+              feedback={feedback}
+              loading={loading}
+              setName={setName}
+              setUserEmail={setUserEmail}
+              setFeedback={setFeedback}
+              handleSubmit={handleSubmit}
             />
-            <input
-              type="email"
-              placeholder="Your Email"
-              value={userEmail}
-              onChange={(e) => setUserEmail(e.target.value)}
-              className="bg-[#121212] border border-[#18cef2] rounded px-4 py-4 text-white placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#18cef2] text-lg sm:text-xl"
-              required
-            />
-            <textarea
-              placeholder="Your Feedback"
-              value={feedback}
-              onChange={(e) => setFeedback(e.target.value)}
-              className="bg-[#121212] border border-[#18cef2] rounded px-4 py-4 resize-none text-white placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#18cef2] text-lg sm:text-xl"
-              rows={6}
-              required
-            />
-            <button
-              type="submit"
-              className="bg-gradient-to-r from-[#18cef2] via-[#38bdf8] to-[#0ff4] text-black font-extrabold w-full px-6 py-4 rounded shadow-lg hover:shadow-[#18cef2]/50 hover:scale-105 transition-all duration-300 text-lg pulse-color1 sm:text-xl"
-              disabled={loading}
-            >
-              {loading ? "Sending..." : "Submit"}
-            </button>
-          </form>
-        </motion.div>
+          </motion.div>
+        )}
       </div>
     </section>
   );
 };
+
+const ContactForm = ({
+  name,
+  userEmail,
+  feedback,
+  loading,
+  setName,
+  setUserEmail,
+  setFeedback,
+  handleSubmit,
+}) => (
+  <form
+    className="flex flex-col gap-4 w-full max-w-full"
+    onSubmit={handleSubmit}
+  >
+    <input
+      type="text"
+      placeholder="Your Name"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      className="bg-[#121212] border border-[#18cef2] rounded px-4 py-4 text-white placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#18cef2] text-lg sm:text-xl"
+      required
+    />
+    <input
+      type="email"
+      placeholder="Your Email"
+      value={userEmail}
+      onChange={(e) => setUserEmail(e.target.value)}
+      className="bg-[#121212] border border-[#18cef2] rounded px-4 py-4 text-white placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#18cef2] text-lg sm:text-xl"
+      required
+    />
+    <textarea
+      placeholder="Your Feedback"
+      value={feedback}
+      onChange={(e) => setFeedback(e.target.value)}
+      className="bg-[#121212] border border-[#18cef2] rounded px-4 py-4 resize-none text-white placeholder-[#94a3b8] focus:outline-none focus:ring-2 focus:ring-[#18cef2] text-lg sm:text-xl"
+      rows={6}
+      required
+    />
+    <button
+      type="submit"
+      className="bg-gradient-to-r from-[#18cef2] via-[#38bdf8] to-[#0ff4] text-black font-extrabold w-full px-6 py-4 rounded shadow-lg hover:shadow-[#18cef2]/50 hover:scale-105 transition-all duration-300 text-lg pulse-color1 sm:text-xl"
+      disabled={loading}
+    >
+      {loading ? "Sending..." : "Submit"}
+    </button>
+  </form>
+);
 
 export default EmailSection;
