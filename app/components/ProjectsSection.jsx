@@ -199,26 +199,33 @@ const ProjectModal = ({ project, handleCloseModal }) => (
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
-      className="bg-gray-900 backdrop-blur-md px-8 py-6 rounded-2xl
+      className="bg-gray-900 backdrop-blur-md px-6 py-6 rounded-2xl
         border border-cyan-500/50 shadow-[0_0_25px_2px_rgba(0,255,247,0.3)]
-        hover:shadow-[0_0_35px_4px_rgba(255,0,255,0.5)] relative overflow-hidden w-full max-w-4xl"
+        hover:shadow-[0_0_35px_4px_rgba(255,0,255,0.5)]
+        relative overflow-y-auto w-full max-w-2xl max-h-[85vh]"
     >
+      {/* Close Button */}
       <button
         onClick={handleCloseModal}
         className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-[#ff00ff] z-50"
       >
         &times;
       </button>
+
       <div className="flex flex-col items-center">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full max-h-[400px] object-contain rounded-xl shadow-2xl mb-6"
+          className="w-full max-h-[300px] object-contain rounded-xl shadow-2xl mb-6"
         />
-        <h3 className="text-3xl font-bold text-fuchsia-400 mb-4 text-center drop-shadow-[0_0_10px_#ff00ff]">
+        <h3 className="text-2xl sm:text-3xl font-bold text-fuchsia-400 mb-4 text-center drop-shadow-[0_0_10px_#ff00ff]">
           {project.title}
         </h3>
-        <p className="text-gray-400 mb-6 text-center">{project.description}</p>
+        <p className="text-gray-400 mb-6 text-center text-sm sm:text-base">
+          {project.description}
+        </p>
+
+        {/* Tags */}
         <div className="flex flex-wrap gap-2 justify-center mb-6">
           {project.tags.map((tag, i) => (
             <span
@@ -231,12 +238,14 @@ const ProjectModal = ({ project, handleCloseModal }) => (
             </span>
           ))}
         </div>
+
+        {/* Buttons */}
         <div className="flex gap-4 justify-center">
           <a
             href={project.gitUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gray-800 hover:bg-[#18cef2] text-gray-400 hover:text-black lg:px-6 lg:py-2 px-4 py-2 rounded-xl text-sm sm:text-base font-semibold text-center transition-colors"
+            className="bg-gray-800 hover:bg-[#18cef2] text-gray-400 hover:text-black px-4 py-2 rounded-xl text-sm sm:text-base font-semibold text-center transition-colors"
           >
             View Code
           </a>
@@ -244,7 +253,7 @@ const ProjectModal = ({ project, handleCloseModal }) => (
             href={project.previewUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#18cef2] hover:bg-[#ff00ff] text-black lg:px-6 lg:py-2 px-4 py-2 rounded-xl text-sm sm:text-base font-semibold text-center transition-colors"
+            className="bg-[#18cef2] hover:bg-[#ff00ff] text-black px-4 py-2 rounded-xl text-sm sm:text-base font-semibold text-center transition-colors"
           >
             View Live
           </a>

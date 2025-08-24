@@ -104,15 +104,15 @@ const EmailSection = () => {
               },
               {
                 icon: <Linkedin size={32} />,
-                url: "https://linkedin.com/in/yourusername",
+                url: "https://www.linkedin.com/in/aman-rai-1b3782341/",
               },
               {
                 icon: <Facebook size={32} />,
-                url: "https://facebook.com/yourusername",
+                url: "https://www.facebook.com/aman.rai.131116/",
               },
               {
                 icon: <Instagram size={32} />,
-                url: "https://instagram.com/yourusername",
+                url: "https://www.instagram.com/sussy_baka9.11/",
               },
             ].map((item, idx) => (
               <motion.a
