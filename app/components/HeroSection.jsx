@@ -45,11 +45,13 @@ const HeroSection = () => {
               I'm a{" "}
               <TypeAnimation
                 sequence={[
-                  "Web Developer",
-                  1000,
                   "Full-Stack Developer",
                   1000,
+                  "UI/UX Explorer",
+                  1000,
                   "Coding Enthusiast",
+                  1000,
+                  "Tech Learner",
                   1000,
                 ]}
                 wrapper="span"
@@ -80,10 +82,11 @@ const HeroSection = () => {
 
           {/* Introduction */}
           <p className="text-[#94a3b8] text-lg sm:text-xl lg:text-2xl max-w-3xl mx-auto md:mx-0">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate
-            id corporis nesciunt sapiente illum amet laboriosam, reprehenderit,
-            at sunt nemo, explicabo molestias incidunt! Placeat magni ipsum
-            molestias assumenda laudantium! Est.
+            A passionate web developer and tech enthusiast. I love turning ideas
+            into interactive, responsive, and visually appealing web
+            applications. I enjoy learning new technologies, exploring modern
+            frameworks, and continuously improving my coding skills while
+            building projects that make an impact.
           </p>
 
           {/* Buttons */}
