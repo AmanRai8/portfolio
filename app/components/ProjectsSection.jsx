@@ -11,7 +11,7 @@ const projectsData = [
       "AI Assistant is a real-time AI chat and voice assistant built with Next.js, React, and Tailwind CSS. It offers intelligent, personalized, and responsive AI interactions, including voice commands, contextual conversation memory, and seamless integration with external APIs. Users can chat, get answers, and perform tasks efficiently, all within a sleek and intuitive interface.",
     image: "/ai.png",
     gitUrl: "https://github.com/AmanRai8/ai_assistant",
-    previewUrl: "https://ai-assistant-khaki28.vercel.app/",
+    previewUrl: "https://ai-assistant69.vercel.app/",
     tags: [
       "NEXT JS",
       "Tailwind CSS",
