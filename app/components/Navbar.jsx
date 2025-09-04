@@ -38,7 +38,7 @@ const Navbar = () => {
           ))}
           {/* GitHub Button */}
           <a
-            href="https://github.com/AmanRai8/ai_trainer"
+            href="https://github.com/AmanRai8/portfolio"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-3 py-1 border-none rounded-lg hover:bg-[#18cef2]/30 transition-all duration-300 text-lg md:text-xl"
@@ -70,7 +70,7 @@ const Navbar = () => {
             </a>
           ))}
           <a
-            href="https://github.com/AmanRai8/ai_trainer"
+            href="https://github.com/AmanRai8/portfolio"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-[#18cef2]/30 transition-all duration-300 text-xl"
