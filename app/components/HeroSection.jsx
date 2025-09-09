@@ -120,22 +120,25 @@ const HeroSection = () => {
               <span className="absolute bottom-0 left-0 h-[2px] sm:h-[3px] w-0 bg-[#0a0c14] group-hover:w-full transition-all duration-500"></span>
             </MotionOrDiv>
 
-            <MotionOrDiv
-              as="a"
-              href="/CV.pdf"
-              download
-              className="relative px-0.5 py-0.5 rounded-full shadow-lg shadow-[#9333ea]/40 pulse-color overflow-hidden cursor-pointer group"
-              {...(!isMobile && {
-                whileHover: "hover",
-                whileTap: "tap",
-                variants: buttonHover,
-              })}
+            <a
+              href="/AmanRai__CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <span className="block rounded-full px-5 py-2 sm:px-6 sm:py-3 text-base sm:text-xl bg-gradient-to-r from-[#6d28d9] via-[#9333ea] to-[#c084fc] text-white group-hover:opacity-90">
-                Download CV
-              </span>
-              <span className="absolute bottom-0 left-0 h-[2px] sm:h-[3px] w-0 bg-[#18cef2] group-hover:w-full transition-all duration-500"></span>
-            </MotionOrDiv>
+              <MotionOrDiv
+                className="relative px-0.5 py-0.5 rounded-full shadow-lg shadow-[#9333ea]/40 overflow-hidden cursor-pointer group"
+                {...(!isMobile && {
+                  whileHover: "hover",
+                  whileTap: "tap",
+                  variants: buttonHover,
+                })}
+              >
+                <span className="block rounded-full px-5 py-2 sm:px-6 sm:py-3 text-base sm:text-xl bg-gradient-to-r from-[#6d28d9] via-[#9333ea] to-[#c084fc] text-white group-hover:opacity-90 transition-all duration-300">
+                  Download CV
+                </span>
+                <span className="absolute bottom-0 left-0 h-[2px] sm:h-[3px] w-0 bg-[#18cef2] group-hover:w-full transition-all duration-500 ease-in-out"></span>
+              </MotionOrDiv>
+            </a>
           </div>
         </MotionOrDiv>
 

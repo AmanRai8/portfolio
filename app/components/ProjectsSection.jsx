@@ -9,7 +9,7 @@ const projectsData = [
     title: "AI Assistant",
     description:
       "AI Assistant is a real-time AI chat and voice assistant built with Next.js, React, and Tailwind CSS. It offers intelligent, personalized, and responsive AI interactions, including voice commands, contextual conversation memory, and seamless integration with external APIs. Users can chat, get answers, and perform tasks efficiently, all within a sleek and intuitive interface.",
-    image: "/ai.png",
+    image: "/AI_assistant.png",
     gitUrl: "https://github.com/AmanRai8/ai_assistant",
     previewUrl: "https://ai-assistant69.vercel.app/",
     tags: [
@@ -23,50 +23,67 @@ const projectsData = [
   },
   {
     id: 2,
+    title: "Chat App",
+    description:
+      "WorkTalk is a modern team collaboration app that lets you chat in real-time, create channels, send direct messages, and hold secure video calls, making teamwork seamless and efficient.",
+    image: "/WT.jpg",
+    gitUrl: "https://github.com/AmanRai8/chat_app",
+    previewUrl: "https://chat-app69.vercel.app/",
+    tags: [
+      "MERN Stack",
+      "Tailwind CSS",
+      "Clerk",
+      "Inngest",
+      "Stream",
+      "Vercel",
+    ],
+  },
+  {
+    id: 3,
     title: "Weather App",
     description:
       "Weather App is a React + Vite application that provides real-time weather updates for any location worldwide. It fetches data from a weather API and displays detailed information including temperature, humidity, wind speed, weather conditions, and forecasts. The app features a responsive UI, location search, and smooth transitions to provide an intuitive user experience.",
-    image: "/wea.jpeg",
+    image: "/wea.jpg",
     gitUrl: "https://github.com/AmanRai8/Weather-app",
     previewUrl: "https://weather-app69.vercel.app/",
     tags: ["React", "WeatherAPI", "CSS", "Vercel"],
   },
   {
-    id: 3,
+    id: 4,
     title: "Currency Converter",
     description:
       "A fully responsive React app for real-time currency conversion. It allows users to convert currencies using up-to-date exchange rates from a reliable API. The app supports multiple currencies, displays country flags for clarity, and provides a simple, user-friendly interface for quick and accurate conversions, making it perfect for travelers, businesses, and students.",
-    image: "/cu.jpeg",
+    image: "/currency_converter.jpg",
     gitUrl: "https://github.com/AmanRai8/currency-converter",
     previewUrl: "https://currency-converter-opal-three.vercel.app/",
     tags: ["React", "Currency API", "Flag API", "CSS", "Vercel"],
   },
   {
-    id: 4,
+    id: 5,
     title: "Personal Chatbot",
     description:
       "A highly customizable private chatbot created with React, Tailwind CSS, and Gemini API. It allows users to interact with a conversational AI for various tasks, queries, and entertainment. The chatbot interface is responsive, supports multiple themes, and offers a smooth and engaging user experience. Ideal for personal use, experimentation, or customer support prototypes.",
-    image: "/chat.jpeg",
+    image: "/chat-bot.jpg",
     gitUrl: "https://github.com/AmanRai8/chatbot",
     previewUrl: "https://chatbot-ruddy-two-58.vercel.app/",
     tags: ["React", "Gemini API", "Tailwind CSS", "Vercel"],
   },
   {
-    id: 5,
+    id: 6,
     title: "Note Book",
     description:
       "Note Book is a full-stack note-taking application built with the MERN stack (MongoDB, Express, React, Node.js). It allows users to create, edit, delete, and organize notes efficiently. The app features a clean and responsive UI, user authentication, real-time updates, and a simple structure that makes managing personal or professional notes effortless.",
-    image: "/note.jpeg",
+    image: "/note-book.png",
     gitUrl: "https://github.com/AmanRai8/Note-Book",
     previewUrl: "https://note-book-xju2.onrender.com/",
     tags: ["Express JS", "Node JS", "React", "MongoDB", "Render"],
   },
   {
-    id: 6,
+    id: 7,
     title: "Recipe App",
     description:
       "Recipe App is a simple yet powerful web application built with HTML, CSS, and JavaScript. It fetches recipe data from an open API and allows users to search for dishes, view detailed ingredients, and see step-by-step cooking instructions. The app is responsive, intuitive, and ideal for anyone looking to explore new recipes or plan meals efficiently.",
-    image: "/rec.jpeg",
+    image: "/recipe-app.png",
     gitUrl: "https://github.com/AmanRai8/Recipe-App",
     previewUrl: "https://recipe-app-69420.netlify.app/",
     tags: ["HTML", "CSS", "JavaScript", "Netlify"],
@@ -209,7 +226,7 @@ const ProjectCard = ({ project, handleOpenModal, isMobile }) => {
 };
 
 const ProjectModal = ({ project, handleCloseModal }) => (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4">
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80 p-4 mt-15">
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
