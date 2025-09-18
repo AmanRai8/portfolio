@@ -26,9 +26,12 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
         {/* Branding / Name */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <h3 className="text-[#18cef2] font-bold cursor-pointer pulse-color text-lg sm:text-xl drop-shadow-[0_0_8px_#18cef2]">
-            Aman Rai
-          </h3>
+          <a href="#home">
+            <h3 className="text-[#18cef2] font-bold cursor-pointer pulse-color text-lg sm:text-xl drop-shadow-[0_0_8px_#18cef2]">
+              Aman Rai
+            </h3>
+          </a>
+
           <p className="text-[#94a3b8] text-xs sm:text-sm mt-1">
             Just a regular coder, coding his way through life ;)
           </p>
