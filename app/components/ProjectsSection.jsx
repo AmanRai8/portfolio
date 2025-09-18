@@ -40,6 +40,23 @@ const projectsData = [
   },
   {
     id: 3,
+    title: "Social Media App",
+    description:
+      "NEXO is a social media app where you can create a profile, share posts, like and comment on others’ posts. It has a clean and easy-to-use interface.",
+    image: "/socialMedia.png",
+    gitUrl: "https://github.com/AmanRai8/social-media-app",
+    previewUrl: "https://nexo69.vercel.app/",
+    tags: [
+      "Next JS",
+      "Typescript",
+      "Prisma ORM",
+      "NEON DB",
+      "Tailwind",
+      "Vercel",
+    ],
+  },
+  {
+    id: 4,
     title: "Weather App",
     description:
       "Weather App is a React + Vite application that provides real-time weather updates for any location worldwide. It fetches data from a weather API and displays detailed information including temperature, humidity, wind speed, weather conditions, and forecasts. The app features a responsive UI, location search, and smooth transitions to provide an intuitive user experience.",
@@ -49,7 +66,7 @@ const projectsData = [
     tags: ["React", "WeatherAPI", "CSS", "Vercel"],
   },
   {
-    id: 4,
+    id: 5,
     title: "Currency Converter",
     description:
       "A fully responsive React app for real-time currency conversion. It allows users to convert currencies using up-to-date exchange rates from a reliable API. The app supports multiple currencies, displays country flags for clarity, and provides a simple, user-friendly interface for quick and accurate conversions, making it perfect for travelers, businesses, and students.",
@@ -57,16 +74,6 @@ const projectsData = [
     gitUrl: "https://github.com/AmanRai8/currency-converter",
     previewUrl: "https://currency-converter-opal-three.vercel.app/",
     tags: ["React", "Currency API", "Flag API", "CSS", "Vercel"],
-  },
-  {
-    id: 5,
-    title: "Personal Chatbot",
-    description:
-      "A highly customizable private chatbot created with React, Tailwind CSS, and Gemini API. It allows users to interact with a conversational AI for various tasks, queries, and entertainment. The chatbot interface is responsive, supports multiple themes, and offers a smooth and engaging user experience. Ideal for personal use, experimentation, or customer support prototypes.",
-    image: "/chat-bot.jpg",
-    gitUrl: "https://github.com/AmanRai8/chatbot",
-    previewUrl: "https://chatbot-ruddy-two-58.vercel.app/",
-    tags: ["React", "Gemini API", "Tailwind CSS", "Vercel"],
   },
   {
     id: 6,
