@@ -20,8 +20,8 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between px-6">
         {/* LOGO */}
         <Link href="/" className="flex items-center gap-4">
-          <span className="text-3xl md:text-4xl font-bold font-mono text-[#f2f2f2]">
-            A<span className="text-[#18cef2] pulse-color">man</span>
+          <span className="text-3xl md:text-4xl font-bold font-mono bg-gradient-to-r from-[#00eaff] via-[#18a0fb] to-[#0077ff] text-transparent bg-clip-text ">
+            Aman
           </span>
         </Link>
 
