@@ -6,7 +6,6 @@ import Skills from "./components/Skills";
 import ProjectsSection from "./components/ProjectsSection";
 import EmailSection from "./components/EmailSection";
 import Footer from "./components/Footer";
-import ParticlesBackground from "./components/ParticlesBackground";
 
 export default function Home() {
   return (

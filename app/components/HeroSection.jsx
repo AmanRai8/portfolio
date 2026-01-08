@@ -120,11 +120,7 @@ const HeroSection = () => {
               <span className="absolute bottom-0 left-0 h-[2px] sm:h-[3px] w-0 bg-[#0a0c14] group-hover:w-full transition-all duration-500"></span>
             </MotionOrDiv>
 
-            <a
-              href="/AmanRai__CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="/CV.pdf" target="_blank" rel="noopener noreferrer">
               <MotionOrDiv
                 className="relative px-0.5 py-0.5 rounded-full shadow-lg shadow-[#9333ea]/40 overflow-hidden cursor-pointer group"
                 {...(!isMobile && {

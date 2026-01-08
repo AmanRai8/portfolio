@@ -6,6 +6,16 @@ import Tilt from "react-parallax-tilt";
 const projectsData = [
   {
     id: 1,
+    title: "Esewa Integration",
+    description:
+      "A React.js project that demonstrates Esewa payment gateway integration using the open API, featuring proper documentation, secure payment flow, and a live deployed demo.",
+    image: "/esewa.png",
+    gitUrl: "https://github.com/AmanRai8/Esewa-integration",
+    previewUrl: "https://esewa-integration.vercel.app/",
+    tags: ["React", "Open-api", "Esewa documentation", "Vercel"],
+  },
+  {
+    id: 2,
     title: "AI Assistant",
     description:
       "AI Assistant is a real-time AI chat and voice assistant built with Next.js, React, and Tailwind CSS. It offers intelligent, personalized, and responsive AI interactions, including voice commands, contextual conversation memory, and seamless integration with external APIs. Users can chat, get answers, and perform tasks efficiently, all within a sleek and intuitive interface.",
@@ -22,27 +32,10 @@ const projectsData = [
     ],
   },
   {
-    id: 2,
-    title: "Chat App",
-    description:
-      "WorkTalk is a modern team collaboration app that lets you chat in real-time, create channels, send direct messages, and hold secure video calls, making teamwork seamless and efficient.",
-    image: "/WT.jpg",
-    gitUrl: "https://github.com/AmanRai8/chat_app",
-    previewUrl: "https://chat-app69.vercel.app/",
-    tags: [
-      "MERN Stack",
-      "Tailwind CSS",
-      "Clerk",
-      "Inngest",
-      "Stream",
-      "Vercel",
-    ],
-  },
-  {
     id: 3,
     title: "Social Media App",
     description:
-      "NEXO is a social media app where you can create a profile, share posts, like and comment on others’ posts. It has a clean and easy-to-use interface.",
+      "A full-stack social media platform built using Next.js, TypeScript, Prisma ORM, and Neon PostgreSQL, supporting user profiles, post creation, likes, comments, and responsive UI design.",
     image: "/socialMedia.png",
     gitUrl: "https://github.com/AmanRai8/social-media-app",
     previewUrl: "https://nexo69.vercel.app/",
@@ -75,18 +68,9 @@ const projectsData = [
     previewUrl: "https://currency-converter-opal-three.vercel.app/",
     tags: ["React", "Currency API", "Flag API", "CSS", "Vercel"],
   },
+
   {
     id: 6,
-    title: "Note Book",
-    description:
-      "Note Book is a full-stack note-taking application built with the MERN stack (MongoDB, Express, React, Node.js). It allows users to create, edit, delete, and organize notes efficiently. The app features a clean and responsive UI, user authentication, real-time updates, and a simple structure that makes managing personal or professional notes effortless.",
-    image: "/note-book.png",
-    gitUrl: "https://github.com/AmanRai8/Note-Book",
-    previewUrl: "https://note-book-xju2.onrender.com/",
-    tags: ["Express JS", "Node JS", "React", "MongoDB", "Render"],
-  },
-  {
-    id: 7,
     title: "Recipe App",
     description:
       "Recipe App is a simple yet powerful web application built with HTML, CSS, and JavaScript. It fetches recipe data from an open API and allows users to search for dishes, view detailed ingredients, and see step-by-step cooking instructions. The app is responsive, intuitive, and ideal for anyone looking to explore new recipes or plan meals efficiently.",
