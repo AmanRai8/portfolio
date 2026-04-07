@@ -12,9 +12,9 @@
     "@heroicons/react": "^2.2.0",
     "lucide-react": "^0.540.0",
     "motion": "^12.23.12",
-    "next": "15.4.10",
-    "react": "19.1.0",
-    "react-dom": "19.1.0",
+    "next": "^16.2.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "react-hot-toast": "^2.6.0",
     "react-icons": "^5.5.0",
     "react-parallax-tilt": "^1.7.305",
@@ -27,7 +27,7 @@
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
-    "eslint-config-next": "15.4.5",
+    "eslint-config-next": "^16.2.2",
     "tailwindcss": "^4"
   }
 }
