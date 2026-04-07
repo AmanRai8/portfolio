@@ -60,10 +60,6 @@ const Skills = () => {
         <h2 className="text-4xl sm:text-5xl font-extrabold text-cyan-400 pulse-color">
           SKILLS
         </h2>
-        <p className="text-gray-300 mt-4 text-lg font-medium">
-          A collection of my technical skills and expertise honed through
-          various projects and experiences
-        </p>
       </div>
 
       {/* Skill Categories */}
